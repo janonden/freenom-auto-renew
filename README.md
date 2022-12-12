@@ -3,3 +3,7 @@
 </p>
 
 # Freenom Auto Renew Domains
+
+
+- **USERNAME**: Your email of your Freenom account
+- **PASSWORD**: Your password of your Freenom account

@@ -48,7 +48,7 @@ class FreeNom(object):
                 with self.session.get('https://my.freenom.com/', timeout=10, proxies=check_proxy) as response:
                     if response.status_code == 200:
                         self.proxy = check_proxy
-                        self.log('use ' + proxy_item)
+                        self.log('use proxy socks5://' + proxy_item)
                         break
             except:
                 pass
@@ -91,15 +91,15 @@ class FreeNom(object):
             msg = "续期失败"
 
             if int(days) > 14:
-                self.log(f"FreeNom domain {domain} can not renew, days until expiry is {days}")
+                self.log(f"FreeNom domain *** can not renew, days until expiry is {days}")
                 msg = "无需续期"
             else:
                 response = self.renew_domain(token, domain_id)
                 if response.find("Order Confirmation") != -1:
                     msg = "续期成功"
-                    self.log(f"FreeNom renew domain {domain} is success")
+                    self.log(f"FreeNom renew domain *** is success")
                 else:
-                    self.log(f"FreeNom renew domain {domain} is fail")
+                    self.log(f"FreeNom renew domain *** is fail")
             result.append({"domain": domain, "days": days, "msg": msg})
         if os.environ["NOTITY_TYPE"] == 'http':
             notify_config = json.loads(os.environ["NOTITY_CONFIG"])
